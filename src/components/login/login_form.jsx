@@ -1,25 +1,28 @@
 "use client"
 
-import { useRouter } from "next/navigation"
-import { useAuth } from "../../../useAuth"
+// import { useRouter } from "next/navigation"
+// import { useAuth } from "../../../useAuth"
 import { useState } from "react"
 import { AtSymbolIcon, KeyIcon } from "@heroicons/react/16/solid"
+import { NextResponse } from "next/server"
+import { handleLogin } from "../../app/data/authApi.js"
 
 export default function LoginPage() {
   // const { handleLogin } = useAuth()
   const [email, setEmail] = useState("the@waitress.com")
   const [password, setPassword] = useState("password")
-  const router = useRouter()
+  // const router = useRouter()
 
   const onSubmit = async (e) => {
     e.preventDefault()
 
     const user = await handleLogin(email, password)
     if (user) {
-      router.push("/")
+      // router.push("/")
+      return NextResponse.redirect(new URL("/zoozoo"))
     } else {
       alert("Login failed. Please check your credentials.")
-      router.push("/")
+      // router.push("/")
     }
   }
 

@@ -1,6 +1,4 @@
 export async function GET() {
-  process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
-
   try {
     const response = await fetch("https://localhost:5212/api/test/shoe", {
       method: "GET",
