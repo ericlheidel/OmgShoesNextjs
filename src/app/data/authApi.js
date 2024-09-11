@@ -1,12 +1,15 @@
-import { cookies } from "next/headers"
+// import { cookies } from "next/headers"
 import { _apiBaseUrl, _authUrl } from "../../../utility"
-
-const COOKIE = cookies().toString()
+import Cookies from "js-cookie"
 
 export async function tryGetLoggedInUser() {
+  const COOKIE = Cookies.get("OmgShoesLoginCookie")
+
   return await fetch(`${_apiBaseUrl}${_authUrl}/me`, {
+    method: "GET",
+    credentials: "include",
     headers: {
-      Cookie: COOKIE,
+      Cookie: `OmgShoesLoginCookie=${COOKIE}`,
     },
   }).then((res) => {
     return res.status === 401 ? Promise.resolve(null) : res.json()
@@ -35,4 +38,16 @@ export async function handleLogin(email, password) {
     console.error("An error occurred during login:", error)
     return null
   }
+}
+
+export async function logout() {
+  const COOKIE = Cookies.get("OmgShoesLoginCookie")
+
+  return await fetch(`${_apiBaseUrl}${_authUrl}/logout`, {
+    method: "GET",
+    credentials: "include",
+    headers: {
+      Cookie: `OmgShoesLoginCookie=${COOKIE}`,
+    },
+  })
 }

@@ -3,13 +3,11 @@
 import Link from "next/link"
 import { PowerIcon } from "@heroicons/react/24/outline"
 import NavLinks from "./nav_links"
-// import { logout } from "../../../auth"
-// import { useAuth } from "../../../useAuth"
-// import { useRouter } from "next/navigation"
+import { logout } from "../../app/data/authApi"
+import { useRouter } from "next/navigation"
 
 export default function SideNav() {
-  // const { setLoggedInUser } = useAuth()
-  // const router = useRouter()
+  const router = useRouter()
 
   return (
     <div className="flex h-full flex-col px-3 py-4 md:px-2">
@@ -28,13 +26,12 @@ export default function SideNav() {
         <form>
           <button
             className="flex h-[48px] w-full grow items-center justify-center gap-2 rounded-md bg-blue-950 p-3 text-amber-600 text-sm font-medium   md:flex-none md:justify-start md:p-2 md:px-3"
-            // onClick={(e) => {
-            //   e.preventDefault()
-            //   logout().then(() => {
-            //     setLoggedInUser(null)
-            //     router.push("/logout")
-            //   })
-            // }}
+            onClick={(e) => {
+              e.preventDefault()
+              logout().then(() => {
+                router.push("/logout")
+              })
+            }}
           >
             <PowerIcon className="w-6" />
             <div className="hidden md:block">Sign Out</div>
