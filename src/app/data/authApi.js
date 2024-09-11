@@ -43,11 +43,30 @@ export async function handleLogin(email, password) {
 export async function logout() {
   const COOKIE = Cookies.get("OmgShoesLoginCookie")
 
-  return await fetch(`${_apiBaseUrl}${_authUrl}/logout`, {
-    method: "GET",
-    credentials: "include",
-    headers: {
-      Cookie: `OmgShoesLoginCookie=${COOKIE}`,
-    },
-  })
+  try {
+    const response = await fetch(`${_apiBaseUrl}${_authUrl}/logout`, {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        Cookie: `OmgShoesLoginCookie=${COOKIE}`,
+      },
+    })
+
+    if (response.ok) {
+      console.log("Logout Successful")
+    } else {
+      console.log("Logout error")
+      return null
+    }
+  } catch (error) {
+    console.error("Error:", error)
+  }
+
+  // return await fetch(`${_apiBaseUrl}${_authUrl}/logout`, {
+  //   method: "GET",
+  //   credentials: "include",
+  //   headers: {
+  //     Cookie: `OmgShoesLoginCookie=${COOKIE}`,
+  //   },
+  // })
 }

@@ -1,9 +1,19 @@
+"use client"
+
 import Image from "next/image"
+import { useRouter } from "next/navigation"
+import { useEffect } from "react"
 
 export default function Page() {
+  const router = useRouter()
+
+  useEffect(() => {
+    router.replace("/")
+  }, [])
+
   return (
     <div>
-      <div className="mt-4 flex grow flex-col gap-4 md:flex-col">
+      <div className="mt-4 flex grow flex-col gap-4">
         <div className="md:w-3/5 flex flex-col justify-center gap-6 rounded-lg bg-blue-950 px-6 py-10 md:px-20">
           <p className="text-xl text-amber-600 md:text-3xl md:leading-normal">
             <strong>Welcome to OMG, Shoes...</strong>
