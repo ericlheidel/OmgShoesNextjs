@@ -2,6 +2,11 @@ import ShoesList from "../../components/shoes/shoes_list"
 import { _apiBaseUrl } from "../../../utility"
 import { cookies } from "next/headers"
 
+export const metadata = {
+  title: "Shoes",
+  description: "Nike SB Dunk Sneaker Community",
+}
+
 export default async function Shoes() {
   async function getShoes() {
     const COOKIE = cookies().toString()
@@ -37,6 +42,7 @@ export default async function Shoes() {
   )
 }
 
+//mm ⬇--my attempt at using /api/shoe/route.ts--⬇
 // export default async function Shoes({ searchTerm = "", filterYear = "" }) {
 // try {
 //   debugger
@@ -71,3 +77,4 @@ export default async function Shoes() {
 //     </div>
 //   )
 // }
+//mm ⬆--my attempt at using /api/shoe/route.ts--⬆

@@ -2,6 +2,11 @@ import { _apiBaseUrl } from "../../../utility"
 import { cookies } from "next/headers"
 import UsersList from "../../components/users/users_list"
 
+export const metadata = {
+  title: "Users",
+  description: "Nike SB Dunk Sneaker Community",
+}
+
 export default async function Users() {
   async function getUsersBasic() {
     process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"

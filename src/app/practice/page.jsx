@@ -1,3 +1,8 @@
+export const metadata = {
+  title: "Practice Test",
+  description: "Nike SB Dunk Sneaker Community",
+}
+
 export default async function ShoesPage() {
   try {
     const res = await fetch("https://localhost:3000/api/practice", {
