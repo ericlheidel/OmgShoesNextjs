@@ -1,14 +1,14 @@
 import { cookies } from "next/headers"
 import { _apiBaseUrl, _userprofileUrl } from "../../../../utility"
+import UserProfile from "../../../components/profile/profile"
 
 export async function generateMetadata({ params }) {
-  // const { id } = params
-
   const response = await fetch(
     `${_apiBaseUrl}${_userprofileUrl}/${params.id}`,
     {
       method: "GET",
       credentials: "include",
+      cache: "no-cache",
       headers: {
         Cookie: cookies().toString(),
       },
@@ -23,5 +23,9 @@ export async function generateMetadata({ params }) {
 }
 
 export default function UserDetails({ params }) {
-  return <div>{`Details for User #${params.id}`}</div>
+  return (
+    <>
+      <UserProfile params={params} />
+    </>
+  )
 }
