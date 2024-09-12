@@ -1,6 +1,7 @@
 import { cookies } from "next/headers"
 import { _apiBaseUrl, _userprofileUrl, _usershoeUrl } from "../../../utility"
 import Image from "next/image"
+import UserShoeCard from "../userShoe/userShoe_card"
 
 export default async function UserProfile({ params }) {
   const userprofileResponse = await fetch(
@@ -62,12 +63,8 @@ export default async function UserProfile({ params }) {
               {userShoeCollection && (
                 <>
                   <div>
-                    <p> UserShoeCard placeholder</p>
                     {userShoeCollection?.map((userShoe) => (
-                      // <UserShoeCard key={userShoe.id} id={userShoe.id} />
-                      <p
-                        key={userShoe.id}
-                      >{`UserShoeCard placeholder #${userShoe.id}`}</p>
+                      <UserShoeCard key={userShoe.id} id={userShoe.id} />
                     ))}
                   </div>
                 </>
