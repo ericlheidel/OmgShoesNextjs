@@ -1,16 +1,6 @@
-"use client"
-
 import Image from "next/image"
-import { useRouter } from "next/navigation"
-import { useEffect } from "react"
 
-export default function Page() {
-  const router = useRouter()
-
-  useEffect(() => {
-    router.replace("/")
-  }, [])
-
+export default function Page(req) {
   return (
     <div>
       <div className="mt-4 flex grow flex-col gap-4">
