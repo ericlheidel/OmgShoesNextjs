@@ -6,6 +6,10 @@
   border: 2.5px solid red;
 }
 
+html {
+  touch-action: manipulation;
+}
+
 /* :root {
   --background: #ffffff;
   --foreground: #171717;

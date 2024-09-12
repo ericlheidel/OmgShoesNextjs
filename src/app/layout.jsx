@@ -57,25 +57,39 @@ export default function RootLayout({ children }) {
       {/* {console.log(response.status)} */}
       {/* {console.log(`${cookies().toString()}`)} */}
       {response.status !== 200 ? (
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} bg-cyan-700 md:flex`}
-        >
-          <div className="w-full flex-none md:w-64">
-            <SideNav />
-          </div>
-          {children}
-        </body>
+        <>
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, user-scalable=no"
+          />
+          <body
+            className={`${geistSans.variable} ${geistMono.variable} bg-cyan-700 md:flex`}
+          >
+            <div className="w-full flex-none md:w-64">
+              <SideNav />
+            </div>
+            <div className="flex-grow p-6 md:overflow-y-auto md:p-12">
+              {children}
+            </div>
+          </body>
+        </>
       ) : (
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} bg-cyan-700 md:flex`}
-        >
-          <div className="w-full flex-none md:w-64">
-            <SideNav />
-          </div>
-          <div className="flex-grow p-6 md:overflow-y-auto md:p-12">
-            {children}
-          </div>
-        </body>
+        <>
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, user-scalable=no"
+          />
+          <body
+            className={`${geistSans.variable} ${geistMono.variable} bg-cyan-700 md:flex`}
+          >
+            <div className="w-full flex-none md:w-64">
+              <SideNav />
+            </div>
+            <div className="flex-grow p-6 md:overflow-y-auto md:p-12">
+              {children}
+            </div>
+          </body>
+        </>
       )}
     </html>
   )
