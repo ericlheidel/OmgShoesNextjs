@@ -17,6 +17,8 @@ export default async function UserShoeDetailsCard({ userShoeId }) {
 
   const userShoe = await userShoeResponse.json()
 
+  console.log(userShoe)
+
   return (
     <>
       <div className="mt-4 rounded-xl flex-col md:flex-row md:flex-wrap mb-4 p-4 bg-blue-950 text-amber-600">

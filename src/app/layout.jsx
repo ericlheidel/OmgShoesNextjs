@@ -15,10 +15,10 @@ const geistMono = localFont({
   weight: "100 900",
 })
 
-// export const metadata = {
-//   title: "OMG, Shoes...",
-//   description: "Nike SB Dunk Sneaker Community",
-// }
+export const metadata = {
+  title: "OMG, Shoes...",
+  description: "Nike SB Dunk Sneaker Community",
+}
 
 export default function RootLayout({ children }) {
   return (
