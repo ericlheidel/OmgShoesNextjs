@@ -7,6 +7,7 @@ import {
   sizes,
 } from "../../../utility"
 import Image from "next/image"
+import UserShoeForm from "../userShoe/userShoe-form"
 
 export default async function ShoeDetailsCard({ params }) {
   // GET specific shoe
@@ -20,8 +21,6 @@ export default async function ShoeDetailsCard({ params }) {
   })
 
   const shoe = await shoeResponse.json()
-
-  console.log(shoe)
 
   // GET all conditions
   const conditionsResponse = await fetch(`${_apiBaseUrl}${_conditionUrl}`, {
@@ -57,7 +56,12 @@ export default async function ShoeDetailsCard({ params }) {
                 <div className="mt-1">{shoe.colorway}</div>
               </div>
               <div>
-                <form>
+                <UserShoeForm
+                  shoe={shoe}
+                  conditions={conditions}
+                  sizes={sizes}
+                />
+                {/* <form>
                   <fieldset>
                     <select
                       className="mt-2 rounded-md h-8 bg-cyan-700 text-blue-950 outline-none"
@@ -101,7 +105,7 @@ export default async function ShoeDetailsCard({ params }) {
                       Add Shoe to Collection
                     </button>
                   </fieldset>
-                </form>
+                </form> */}
               </div>
             </div>
           </>

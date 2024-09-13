@@ -1,6 +1,6 @@
 import Image from "next/image"
 
-export default function Page(req) {
+export default function Page() {
   return (
     <div>
       <div className="mt-4 flex grow flex-col gap-4">
