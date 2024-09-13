@@ -5,7 +5,7 @@ import UserShoeCard from "../userShoe/userShoe_card"
 
 export default async function UserProfile({ params }) {
   const userprofileResponse = await fetch(
-    `${_apiBaseUrl}${_userprofileUrl}/${params.id}`,
+    `${_apiBaseUrl}${_userprofileUrl}/${params.userId}`,
     {
       method: "GET",
       credentials: "include",
@@ -19,7 +19,7 @@ export default async function UserProfile({ params }) {
   const userprofile = await userprofileResponse.json()
 
   const userShoeCollectionResponse = await fetch(
-    `${_apiBaseUrl}${_usershoeUrl}/collection/${params.id}`,
+    `${_apiBaseUrl}${_usershoeUrl}/collection/${params.userId}`,
     {
       method: "GET",
       credentials: "include",
