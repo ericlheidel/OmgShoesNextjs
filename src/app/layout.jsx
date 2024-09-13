@@ -1,8 +1,8 @@
 import localFont from "next/font/local"
 import "./globals.css"
 import SideNav from "../components/nav/sidenav.jsx"
-// import { cookies } from "next/headers"
 import { _apiBaseUrl, _authUrl } from "../../utility"
+import React from "react"
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -15,10 +15,10 @@ const geistMono = localFont({
   weight: "100 900",
 })
 
-export const metadata = {
-  title: "OMG, Shoes...",
-  description: "Nike SB Dunk Sneaker Community",
-}
+// export const metadata = {
+//   title: "OMG, Shoes...",
+//   description: "Nike SB Dunk Sneaker Community",
+// }
 
 export default function RootLayout({ children }) {
   return (
