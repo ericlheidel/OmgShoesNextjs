@@ -22,7 +22,7 @@ export default async function ProfileBasic({ userId }) {
     <>
       {userprofile && (
         <>
-          <div className="p-4 pb-2 bg-blue-950 rounded-xl md:w-fit">
+          <div className="h-fit p-4 pb-2 bg-blue-950 rounded-xl md:w-fit">
             <Link href={`/users/${userId}`}>
               <Image
                 src={`${_apiBaseUrl}${userprofile?.avatar}`}

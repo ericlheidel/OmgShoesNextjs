@@ -59,7 +59,7 @@ export default async function UserProfile({ params }) {
                 </div>
               </div>
             </div>
-            <div className="mt-4 md:ml-4">
+            <div className="mt-4 md:ml-4 md:mt-0">
               {userShoeCollection && (
                 <>
                   <div>
