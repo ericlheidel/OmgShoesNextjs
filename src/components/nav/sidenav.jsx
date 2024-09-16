@@ -45,7 +45,6 @@ export default function SideNav() {
       </div>
       <div className="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2">
         <NavLinks />
-        <div className="hidden h-auto w-full grow rounded-md bg-blue-950 md:block"></div>
         <form>
           <button
             className="flex h-[48px] w-full grow items-center justify-center gap-2 rounded-md bg-blue-950 p-3 text-amber-600 text-sm font-medium   md:flex-none md:justify-start md:p-2 md:px-3"

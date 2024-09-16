@@ -37,7 +37,7 @@ export default async function UserProfile({ params }) {
       <div className="flex flex-col md:flex-row">
         {userprofile && (
           <>
-            <div className="p-4 bg-blue-950 rounded-xl md:w-fit">
+            <div className="h-full p-4 bg-blue-950 rounded-xl md:w-fit">
               <Image
                 src={`${_apiBaseUrl}${userprofile?.avatar}`}
                 alt={`picture of ${userprofile?.name}`}
