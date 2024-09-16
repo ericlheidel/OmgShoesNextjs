@@ -1,9 +1,17 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import UserShoeEditForm from "./userShoe_edit_form"
 
 export default function UserShoeDetailsDiv({ userShoe, loggedInUser }) {
   const [isHidden, setIsHidden] = useState(true)
+
+  const scrollToBottom = () => {
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: "smooth",
+    })
+  }
 
   return (
     <>
@@ -16,29 +24,33 @@ export default function UserShoeDetailsDiv({ userShoe, loggedInUser }) {
         </div>
         {loggedInUser.id === userShoe.userProfileId && (
           <>
-            <button
-              className="mt-4 p-2 rounded-xl text-lg bg-blue-500 text-blue-950"
-              onClick={() => {
-                setIsHidden(false)
-              }}
-            >
-              Edit Shoe
-            </button>
-            <button
-              className="ml-4 mt-4 p-2 rounded-xl text-lg bg-blue-500 text-blue-950"
-              onClick={() => {
-                setIsHidden(true)
-              }}
-            >
-              --hide--
-            </button>
+            {isHidden && (
+              <button
+                className="mt-4 p-2 rounded-xl text-lg bg-blue-500 text-blue-950"
+                onClick={() => {
+                  setIsHidden(false)
+                }}
+              >
+                Edit Shoe
+              </button>
+            )}
+            {!isHidden && (
+              <button
+                className="mt-4 p-2 rounded-xl text-lg bg-blue-500 text-blue-950"
+                onClick={() => {
+                  setIsHidden(true)
+                }}
+              >
+                Cancel
+              </button>
+            )}
           </>
         )}
         <div
-          className="mt-4 p-4 rounded-xl text-amber-600 bg-blue-950"
+          className="mt-4 rounded-xl text-amber-600 bg-blue-950"
           hidden={isHidden}
         >
-          TEST
+          <UserShoeEditForm userShoe={userShoe} loggedInUser={loggedInUser} />
         </div>
       </div>
     </>

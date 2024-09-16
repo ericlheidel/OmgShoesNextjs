@@ -67,24 +67,26 @@ export default async function UserShoeDetails({ params }) {
   const isShoeLikedByCurrentUser = await isShoeLikedByCurrentUserResponse.json()
 
   return (
-    <>
+    <div className="md:flex md:flex-row">
       <ProfileBasic userId={params.userId} />
-      <UserShoeDetailsCard userShoeId={params.userShoeId} />
-      {loggedInUser.id !== userShoe.userProfileId ? (
-        <LikesDiv
-          userShoe={userShoe}
-          loggedInUserId={loggedInUser.id}
-          likes={userShoe?.likes?.length}
-          isLiked={isShoeLikedByCurrentUser.isLikedByCurrentUser}
-        />
-      ) : (
-        <div className="p-4 rounded-xl text-2xl bg-blue-950 text-amber-600">
-          Likes: {userShoe?.likes?.length}
+      <div className="md:ml-4">
+        <UserShoeDetailsCard userShoeId={params.userShoeId} />
+        {loggedInUser.id !== userShoe.userProfileId ? (
+          <LikesDiv
+            userShoe={userShoe}
+            loggedInUserId={loggedInUser.id}
+            likes={userShoe?.likes?.length}
+            isLiked={isShoeLikedByCurrentUser.isLikedByCurrentUser}
+          />
+        ) : (
+          <div className="p-4 rounded-xl text-2xl bg-blue-950 text-amber-600">
+            Likes: {userShoe?.likes?.length}
+          </div>
+        )}
+        <div>
+          <UserShoeDetailsDiv userShoe={userShoe} loggedInUser={loggedInUser} />
         </div>
-      )}
-      <div>
-        <UserShoeDetailsDiv userShoe={userShoe} loggedInUser={loggedInUser} />
       </div>
-    </>
+    </div>
   )
 }

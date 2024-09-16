@@ -14,3 +14,16 @@ export const getUserShoeFullDetails = async (userShoeId, loggedInUserId) => {
     }
   ).then((res) => res.json())
 }
+
+export const editUserShoe = async (userShoe, userShoeId) => {
+  return await fetch(`${_apiBaseUrl}${_usershoeUrl}/${userShoeId}`, {
+    method: "PUT",
+    credentials: "include",
+    cache: "no-cache",
+    headers: {
+      "Content-Type": "application/json",
+      Cookie: Cookies.get("OmgShoesLoginCookie"),
+    },
+    body: JSON.stringify(userShoe),
+  })
+}

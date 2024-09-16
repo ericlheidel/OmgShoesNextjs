@@ -7,18 +7,22 @@ import {
   sizes,
 } from "../../../utility"
 import Image from "next/image"
-import UserShoeForm from "../userShoe/userShoe-form"
+import UserShoeForm from "../userShoe/userShoe_form"
 
 export default async function ShoeDetailsCard({ params }) {
+  console.log(typeof params.shoeId)
   // GET specific shoe
-  const shoeResponse = await fetch(`${_apiBaseUrl}${_shoeUrl}/${params.id}`, {
-    method: "GET",
-    credentials: "include",
-    cache: "no-cache",
-    headers: {
-      Cookie: `${cookies().toString()}`,
-    },
-  })
+  const shoeResponse = await fetch(
+    `${_apiBaseUrl}${_shoeUrl}/${params.shoeId}`,
+    {
+      method: "GET",
+      credentials: "include",
+      cache: "no-cache",
+      headers: {
+        Cookie: `${cookies().toString()}`,
+      },
+    }
+  )
 
   const shoe = await shoeResponse.json()
 
@@ -61,51 +65,6 @@ export default async function ShoeDetailsCard({ params }) {
                   conditions={conditions}
                   sizes={sizes}
                 />
-                {/* <form>
-                  <fieldset>
-                    <select
-                      className="mt-2 rounded-md h-8 bg-cyan-700 text-blue-950 outline-none"
-                      defaultValue={0}
-                    >
-                      <option value={0} key={0}>
-                        Select a Condition
-                      </option>
-                      {conditions?.map((condition) => {
-                        return (
-                          <option value={condition.id} key={condition.id}>
-                            {condition.description}
-                          </option>
-                        )
-                      })}
-                    </select>
-                  </fieldset>
-                  <fieldset>
-                    <select
-                      className="mt-4 rounded-md h-8 bg-cyan-700 text-blue-950 outline-none"
-                      defaultValue={0}
-                    >
-                      <option>Select a Size</option>
-                      {sizes.map((size) => {
-                        return (
-                          <option value={size.size} key={size.id}>
-                            {size.size}
-                          </option>
-                        )
-                      })}
-                    </select>
-                  </fieldset>
-                  <fieldset>
-                    <textarea
-                      className="mt-4 rounded-md h-24 bg-cyan-700 outline-none p-[4px] text-blue-950"
-                      defaultValue={""}
-                    ></textarea>
-                  </fieldset>
-                  <fieldset>
-                    <button className="mt-2 p-2 rounded-md bg-gray-500 text-black">
-                      Add Shoe to Collection
-                    </button>
-                  </fieldset>
-                </form> */}
               </div>
             </div>
           </>

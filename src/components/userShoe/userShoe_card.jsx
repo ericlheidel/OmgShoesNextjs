@@ -16,14 +16,14 @@ export default async function UserShoeCard({ id }) {
   const userShoe = await userShoeResponse.json()
 
   return (
-    <>
+    <div>
       <Link href={`/users/${userShoe.userProfileId}/userShoes/${userShoe.id}`}>
-        <div className="font-semibold rounded-xl flex-col md:flex-row md:flex-wrap mb-4 p-4 bg-blue-950">
+        <div className="md: w-fit font-semibold rounded-xl flex-col md:flex-row md:flex-wrap mb-4 p-4 bg-blue-950">
           <Image
             src={`${_apiBaseUrl}${userShoe?.shoe.image}`}
             alt={`image of ${userShoe?.shoe.name} shoe`}
-            width={500}
-            height={500}
+            width={350}
+            height={350}
             className="rounded-xl"
           />
           <div className="mt-2 text-xl text-amber-600">
@@ -36,6 +36,6 @@ export default async function UserShoeCard({ id }) {
           <div className="text-lg text-cyan-700">{userShoe?.description}</div>
         </div>
       </Link>
-    </>
+    </div>
   )
 }

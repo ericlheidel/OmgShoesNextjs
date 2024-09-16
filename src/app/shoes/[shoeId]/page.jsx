@@ -3,7 +3,7 @@ import { _apiBaseUrl, _shoeUrl } from "../../../../utility"
 import ShoeDetailsCard from "../../../components/shoes/shoe_detail_card"
 
 export async function generateMetadata({ params }) {
-  const response = await fetch(`${_apiBaseUrl}${_shoeUrl}/${params.id}`, {
+  const response = await fetch(`${_apiBaseUrl}${_shoeUrl}/${params.shoeId}`, {
     method: "GET",
     credentials: "include",
     cache: "no-cache",
