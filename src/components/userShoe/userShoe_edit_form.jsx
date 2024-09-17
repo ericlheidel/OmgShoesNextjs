@@ -69,7 +69,7 @@ export default function UserShoeEditForm({ userShoe, loggedInUser }) {
             <label>
               <p className="mt-4 font-semibold text-xl">Edit Description:</p>
               <textarea
-                className="rounded-md h-24 bg-cyan-700 outline-none p-[4px] text-blue-950"
+                className="rounded-md h-24 bg-cyan-700 p-[4px] text-blue-950 outline-none resize-none"
                 value={editedDescription}
                 onChange={(e) => setEditedDescription(e.target.value)}
               ></textarea>

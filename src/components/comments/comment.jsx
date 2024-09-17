@@ -4,7 +4,7 @@ import Image from "next/image"
 import { formatDateDetailed } from "../../../utility"
 import { useState } from "react"
 import Link from "next/link"
-import { editComment } from "@/data/commentApi"
+import { deleteComment, editComment } from "@/data/commentApi"
 
 export default function Comment({ comment, loggedInUser }) {
   const [isHidden, setIsHidden] = useState(true)
@@ -15,8 +15,6 @@ export default function Comment({ comment, loggedInUser }) {
       e.preventDefault()
       window.alert("Please enter a comment")
     } else {
-      const newText = editedComment
-
       const updatedComment = {
         id: comment.id,
         userProfileId: comment.userProfileId,
@@ -28,7 +26,9 @@ export default function Comment({ comment, loggedInUser }) {
     }
   }
 
-  const handleDelete = () => {}
+  const handleDelete = () => {
+    deleteComment(comment.id)
+  }
 
   return (
     //+ COMMENT DIV
@@ -56,7 +56,7 @@ export default function Comment({ comment, loggedInUser }) {
         hidden={isHidden}
       >
         <textarea
-          className="w-full rounded-xl bg-cyan-700 outline-none"
+          className="w-full rounded-xl bg-cyan-700 outline-none resize-none"
           value={editedComment}
           onChange={(e) => {
             setEditedComment(e.target.value)
@@ -115,9 +115,16 @@ export default function Comment({ comment, loggedInUser }) {
             >
               Cancel
             </button>
-            <button className=" px-auto py-2 w-[75px] rounded-xl bg-blue-500 text-blue-950">
-              Delete
-            </button>
+            <form>
+              <fieldset>
+                <button
+                  className=" px-auto py-2 w-[75px] rounded-xl bg-blue-500 text-blue-950"
+                  onClick={handleDelete}
+                >
+                  Delete
+                </button>
+              </fieldset>
+            </form>
           </div>
         </div>
       </div>

@@ -1,6 +1,19 @@
 import { _apiBaseUrl, _commentUrl } from "utility"
 import Cookies from "js-cookie"
 
+export const postComment = async (comment) => {
+  return await fetch(`${_apiBaseUrl}${_commentUrl}`, {
+    method: "POST",
+    credentials: "include",
+    cache: "no-cache",
+    headers: {
+      "Content-Type": "application/json",
+      Cookie: Cookies.get("OmgShoesLoginCookie"),
+    },
+    body: JSON.stringify(comment),
+  })
+}
+
 export const editComment = async (comment) => {
   return await fetch(`${_apiBaseUrl}${_commentUrl}/${comment.id}`, {
     method: "PUT",

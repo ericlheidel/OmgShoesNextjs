@@ -104,7 +104,7 @@ export default function UserShoeForm({ shoe, conditions, sizes }) {
         </fieldset>
         <fieldset>
           <textarea
-            className="mt-4 rounded-md h-24 bg-cyan-700 outline-none p-[4px] text-blue-950"
+            className="mt-4 rounded-md h-24 bg-cyan-700 p-[4px] text-blue-950 outline-none resize-none"
             value={userShoeDescription}
             required
             onChange={(e) => setUserShoeDescription(e.target.value)}

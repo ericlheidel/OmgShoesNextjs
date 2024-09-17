@@ -1,4 +1,5 @@
 import { cookies } from "next/headers"
+import CommentForm from "src/components/comments/comment_form"
 import CommentsDiv from "src/components/comments/comments_div"
 import LikesDiv from "src/components/likes/likes_div"
 import ProfileBasic from "src/components/profile/profile_basic"
@@ -87,17 +88,33 @@ export default async function UserShoeDetails({ params }) {
         <div>
           <UserShoeDetailsDiv userShoe={userShoe} loggedInUser={loggedInUser} />
         </div>
-        {/* ⬇ MOBILE-DEVICE ⬇ */}
+        {/*//+ ⬇ MOBILE-DEVICE ⬇ */}
+        {/*//+ ⬇ MOBILE-DEVICE ⬇ */}
+        {/*//+ ⬇ MOBILE-DEVICE ⬇ */}
         <div className="md:hidden block mt-4 p-4 rounded-xl bg-blue-950">
           <CommentsDiv userShoe={userShoe} loggedInUser={loggedInUser} />
         </div>
-        {/* ⬆ MOBILE-DEVICE ⬆ */}
+        <div className="md:hidden mt-4 p-4 rounded-xl bg-blue-950">
+          <CommentForm loggedInUser={loggedInUser} userShoeId={userShoe.id} />
+        </div>
+        {/*//+ ⬆ MOBILE-DEVICE ⬆ */}
+        {/*//+ ⬆ MOBILE-DEVICE ⬆ */}
+        {/*//+ ⬆ MOBILE-DEVICE ⬆ */}
       </div>
-      {/* ⬇ non-mobile-device ⬇ */}
-      <div className="hidden md:block md:w-[50%] md:h-fit md:ml-4 md:p-4 md:rounded-xl md:bg-blue-950">
-        <CommentsDiv userShoe={userShoe} loggedInUser={loggedInUser} />
+      {/*//+ ⬇ non-mobile-device ⬇ */}
+      {/*//+ ⬇ non-mobile-device ⬇ */}
+      {/*//+ ⬇ non-mobile-device ⬇ */}
+      <div className="flex flex-col">
+        <div className="md:block hidden md:h-fit md:ml-4 md:p-4 md:rounded-xl md:bg-blue-950">
+          <CommentsDiv userShoe={userShoe} loggedInUser={loggedInUser} />
+        </div>
+        <div className="md:block hidden md:ml-4 md:mt-4 md:p-4 md:rounded-xl md:bg-blue-950">
+          <CommentForm loggedInUser={loggedInUser} userShoeId={userShoe.id} />
+        </div>
       </div>
-      {/* ⬆ non-mobile-device ⬆ */}
+      {/*//+ ⬆ non-mobile-device ⬆ */}
+      {/*//+ ⬆ non-mobile-device ⬆ */}
+      {/*//+ ⬆ non-mobile-device ⬆ */}
     </div>
   )
 }
