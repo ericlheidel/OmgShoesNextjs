@@ -19,7 +19,7 @@ export default async function UserShoeDetailsCard({ userShoeId }) {
 
   return (
     <>
-      <div className="mt-4 rounded-xl flex-col md:flex-row md:flex-wrap mb-4 p-4 bg-blue-950 text-amber-600">
+      <div className="md:mt-0 mt-4 rounded-xl flex-col md:flex-row md:flex-wrap mb-4 p-4 bg-blue-950 text-amber-600">
         <Image
           src={`${_apiBaseUrl}${userShoe?.shoe.image}`}
           alt={`image of ${userShoe?.shoe.name} shoe`}
@@ -27,13 +27,13 @@ export default async function UserShoeDetailsCard({ userShoeId }) {
           height={500}
           className="rounded-xl"
         />
-        <div className="mt-2 text-2xl text-amber-600 font-semibold">
+        <div className="mt-2 text-3xl text-amber-600 font-semibold">
           {userShoe?.shoe.name}
         </div>
-        <div className="text-md">Style: {userShoe?.shoe.style}</div>
-        <div className="text-md">{userShoe?.shoe.year}</div>
-        <div className="text-md">{userShoe?.shoe.modelNumber}</div>
-        <div className="text-md">{userShoe?.shoe.colorway}</div>
+        <div className="text-lg">Style: {userShoe?.shoe.style}</div>
+        <div className="text-lg">{userShoe?.shoe.year}</div>
+        <div className="text-lg">{userShoe?.shoe.modelNumber}</div>
+        <div className="text-lg">{userShoe?.shoe.colorway}</div>
       </div>
     </>
   )

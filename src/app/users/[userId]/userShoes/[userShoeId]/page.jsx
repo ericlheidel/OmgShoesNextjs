@@ -1,4 +1,5 @@
 import { cookies } from "next/headers"
+import CommentsDiv from "src/components/comments/comments_div"
 import LikesDiv from "src/components/likes/likes_div"
 import ProfileBasic from "src/components/profile/profile_basic"
 import UserShoeDetailsCard from "src/components/userShoe/userShoe_details_card"
@@ -39,7 +40,7 @@ export default async function UserShoeDetails({ params }) {
   const loggedInUser = await loggedInUserResponse.json()
 
   const userShoeResponse = await fetch(
-    `${_apiBaseUrl}${_usershoeUrl}/${params.userShoeId}`,
+    `${_apiBaseUrl}${_usershoeUrl}/${params.userShoeId}?userId=${loggedInUser.id}`,
     {
       method: "GET",
       credentials: "include",
@@ -80,13 +81,23 @@ export default async function UserShoeDetails({ params }) {
           />
         ) : (
           <div className="p-4 rounded-xl text-2xl bg-blue-950 text-amber-600">
-            Likes: {userShoe?.likes?.length}
+            <b>Likes:</b> {userShoe?.likes?.length}
           </div>
         )}
         <div>
           <UserShoeDetailsDiv userShoe={userShoe} loggedInUser={loggedInUser} />
         </div>
+        {/* ⬇ MOBILE-DEVICE ⬇ */}
+        <div className="md:hidden block mt-4 p-4 rounded-xl bg-blue-950">
+          <CommentsDiv userShoe={userShoe} loggedInUser={loggedInUser} />
+        </div>
+        {/* ⬆ MOBILE-DEVICE ⬆ */}
       </div>
+      {/* ⬇ non-mobile-device ⬇ */}
+      <div className="hidden md:block md:w-[50%] md:h-fit md:ml-4 md:p-4 md:rounded-xl md:bg-blue-950">
+        <CommentsDiv userShoe={userShoe} loggedInUser={loggedInUser} />
+      </div>
+      {/* ⬆ non-mobile-device ⬆ */}
     </div>
   )
 }
