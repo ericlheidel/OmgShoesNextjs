@@ -1,6 +1,6 @@
 "use client"
 
-import { getAllConditions } from "@/data/conditinsApi"
+import { getAllConditions } from "@/data/conditionApi"
 import { editUserShoe } from "@/data/userShoeApi"
 import { useEffect, useState } from "react"
 
@@ -17,6 +17,7 @@ export default function UserShoeEditForm({ userShoe, loggedInUser }) {
 
   useEffect(() => {
     setEditedCondition(userShoe?.conditionId)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const handleSave = (e) => {

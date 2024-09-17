@@ -28,6 +28,63 @@ export const sizes = [
   { id: 17, size: 14 },
 ]
 
+export const formatDateBasic = (timeStamp) => {
+  const date = new Date(timeStamp)
+  const year = date.getFullYear()
+  const month = String(date.getMonth() + 1).padStart(2, "0")
+  const day = String(date.getDate()).padStart(2, "0")
+  const hours = date.getHours()
+  const minutes = String(date.getMinutes()).padStart(2, "0")
+  const ampm = hours >= 12 ? "PM" : "AM"
+  const formattedHours = hours % 12 || 12
+  return `${year}-${month}-${day} ${formattedHours}:${minutes} ${ampm}`
+}
+
+export const formatDateDetailed = (timeStamp) => {
+  const date = new Date(timeStamp)
+
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ]
+
+  const year = date.getFullYear()
+  const month = monthNames[date.getMonth()]
+
+  const getDayWithSuffix = (day) => {
+    if (day > 3 && day < 21) return day + "th"
+    switch (day % 10) {
+      case 1:
+        return day + "st"
+      case 2:
+        return day + "nd"
+      case 3:
+        return day + "rd"
+      default:
+        return day + "th"
+    }
+  }
+
+  const day = getDayWithSuffix(date.getDate())
+
+  const hours = date.getHours()
+  const minutes = String(date.getMinutes()).padStart(2, "0")
+  const ampm = hours >= 12 ? "PM" : "AM"
+  const formattedHours = hours % 12 || 12
+
+  return `${month} ${day}, ${year} at ${formattedHours}:${minutes} ${ampm}`
+}
+
 export const ThumbsUp = (
   <svg
     xmlns="http://www.w3.org/2000/svg"

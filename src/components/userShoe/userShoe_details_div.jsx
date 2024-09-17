@@ -6,21 +6,17 @@ import UserShoeEditForm from "./userShoe_edit_form"
 export default function UserShoeDetailsDiv({ userShoe, loggedInUser }) {
   const [isHidden, setIsHidden] = useState(true)
 
-  const scrollToBottom = () => {
-    window.scrollTo({
-      top: document.documentElement.scrollHeight,
-      behavior: "smooth",
-    })
-  }
-
   return (
     <>
       <div className="mt-4 p-4 rounded-xl bg-blue-950">
         <div className="text-2xl text-amber-600">
-          Condition: {userShoe?.condition?.description}
+          <b>Condition:</b>
+          <br></br>
+          {userShoe?.condition?.description}
         </div>
         <div className="mt-4 text-2xl text-amber-600">
-          Description: {userShoe.description}
+          <b>Description:</b>
+          <br></br> {`"${userShoe.description}"`}
         </div>
         {loggedInUser.id === userShoe.userProfileId && (
           <>
