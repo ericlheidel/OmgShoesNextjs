@@ -1,11 +1,10 @@
 "use client"
 
 import {
-  UserGroupIcon,
   HomeIcon,
-  DocumentDuplicateIcon,
   Squares2X2Icon,
   UserCircleIcon,
+  UserIcon,
 } from "@heroicons/react/24/outline"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -33,7 +32,7 @@ const links = [
   },
 ]
 
-export default function NavLinks() {
+export default function NavLinks({ loggedInUser }) {
   const pathname = usePathname()
 
   return (
@@ -56,6 +55,20 @@ export default function NavLinks() {
           </Link>
         )
       })}
+      <Link
+        key={loggedInUser.id}
+        href={`/users/${loggedInUser.id}`}
+        className={clsx(
+          "flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-blue-950 text-amber-600 p-3 text-sm font-medium  md:flex-none md:justify-start md:p-2 md:px-3",
+          {
+            "bg-pink-950 text-amber-600":
+              pathname === `/users/${loggedInUser.id}`,
+          }
+        )}
+      >
+        <UserIcon className="w-6" />
+        <p className="hidden md:block">Profile</p>
+      </Link>
     </>
   )
 }

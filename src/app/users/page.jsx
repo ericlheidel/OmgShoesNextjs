@@ -9,8 +9,6 @@ export const metadata = {
 
 export default async function Users() {
   async function getUsersBasic() {
-    process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
-
     const COOKIE = cookies().toString()
 
     let response = await fetch(`${_apiBaseUrl}/api/userprofile/basic`, {
