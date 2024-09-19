@@ -56,13 +56,13 @@ export default function NavLinks({ loggedInUser }) {
         )
       })}
       <Link
-        key={loggedInUser.id}
-        href={`/users/${loggedInUser.id}`}
+        key={loggedInUser?.id}
+        href={`/users/${loggedInUser?.id}`}
         className={clsx(
           "flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-blue-950 text-amber-600 p-3 text-sm font-medium  md:flex-none md:justify-start md:p-2 md:px-3",
           {
             "bg-pink-950 text-amber-600":
-              pathname === `/users/${loggedInUser.id}`,
+              pathname === `/users/${loggedInUser?.id}`,
           }
         )}
       >

@@ -1,5 +1,5 @@
 import ShoesList from "../../components/shoes/shoes_list"
-import { _apiBaseUrl } from "../../../utility"
+import { _apiBaseUrl, _shoeUrl } from "../../../utility"
 import { cookies } from "next/headers"
 
 export const metadata = {
