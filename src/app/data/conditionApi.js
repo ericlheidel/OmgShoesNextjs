@@ -7,7 +7,7 @@ export const getAllConditions = async () => {
     credentials: "include",
     cache: "no-cache",
     headers: {
-      Cookie: Cookies.get("OmgShoeLoginCookie"),
+      Cookie: Cookies.get("OmgShoesLoginCookie"),
     },
   }).then((res) => res.json())
 }

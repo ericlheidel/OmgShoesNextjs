@@ -1,7 +1,7 @@
 "use client"
 
 import { postLike, removeLike } from "@/data/likeApi"
-import { getUserShoeFullDetails } from "@/data/userShoeApi"
+import { getUserShoeById } from "@/data/userShoeApi"
 import { useEffect, useState } from "react"
 import { _apiBaseUrl, _likeUrl, _usershoeUrl } from "utility"
 
@@ -10,7 +10,7 @@ export default function LikesDiv({ userShoe, loggedInUserId }) {
   const [isLiked, setIsLiked] = useState()
 
   const render = () => {
-    getUserShoeFullDetails(userShoe.id, loggedInUserId).then((res) => {
+    getUserShoeById(userShoe.id, loggedInUserId).then((res) => {
       setLikes(res.likes.length)
       setIsLiked(res.isLikedByCurrentUser)
     })
